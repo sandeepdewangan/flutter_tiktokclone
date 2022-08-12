@@ -1,9 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:tiktok_clone/constants.dart';
-import 'package:tiktok_clone/view/login_page.dart';
-import 'package:tiktok_clone/view/signup_page.dart';
+import 'package:get/get.dart';
+import './constants.dart';
+import './controller/auth_controller.dart';
+import './view/signup_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // First the auth controller will be initialized.
+  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 
@@ -13,7 +18,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Tiktok Clone',
       theme: ThemeData.dark().copyWith(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:tiktok_clone/constants.dart';
+import 'package:tiktok_clone/controller/auth_controller.dart';
 
 import 'widget/custom_text_field.dart';
 
@@ -54,7 +53,7 @@ class SignupPage extends StatelessWidget {
                     bottom: -10,
                     right: 4,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () => AuthController.instance.pickImage(),
                       icon: const Icon(Icons.add_a_photo),
                       color: Colors.white,
                     )),
@@ -85,7 +84,12 @@ class SignupPage extends StatelessWidget {
               height: 10,
             ),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () => AuthController.instance.registerUser(
+                _usernameController.text,
+                _emailController.text,
+                _passwordController.text,
+                AuthController.instance.profilePhoto,
+              ),
               color: myRed,
               child: const Text("Register"),
             ),

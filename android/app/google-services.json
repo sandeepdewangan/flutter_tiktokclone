@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "835963116839",
+    "project_id": "fir-getx-crud-a1222",
+    "storage_bucket": "fir-getx-crud-a1222.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835963116839:android:dfda70661f00341e9b1d02",
+        "android_client_info": {
+          "package_name": "com.example.getx_crud_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835963116839-748ca6otqn18beb7bq04t0sqdhr75dau.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9A5vtdKL6Ev9dsOuKQzYcCdygySSopOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835963116839-748ca6otqn18beb7bq04t0sqdhr75dau.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835963116839:android:0f534d044acb3a2e9b1d02",
+        "android_client_info": {
+          "package_name": "com.example.tiktok_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835963116839-748ca6otqn18beb7bq04t0sqdhr75dau.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9A5vtdKL6Ev9dsOuKQzYcCdygySSopOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835963116839-748ca6otqn18beb7bq04t0sqdhr75dau.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
