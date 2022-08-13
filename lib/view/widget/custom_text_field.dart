@@ -23,7 +23,7 @@ class CustomTextField extends StatelessWidget {
         labelText: labelText,
         prefixIcon: Icon(myicon),
       ),
-      obscureText: false,
+      obscureText: obscureText,
     );
   }
 }

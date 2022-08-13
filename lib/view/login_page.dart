@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:tiktok_clone/constants.dart';
+import 'package:tiktok_clone/controller/auth_controller.dart';
 
 import 'widget/custom_text_field.dart';
 
@@ -57,7 +58,10 @@ class LoginPage extends StatelessWidget {
               height: 10,
             ),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                AuthController.instance.loginUser(_emailController.text.trim(),
+                    _passwordController.text.trim());
+              },
               color: myRed,
               child: const Text("Login"),
             ),

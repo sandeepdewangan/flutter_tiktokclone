@@ -5,6 +5,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tiktok_clone/constants.dart';
+import 'package:tiktok_clone/view/home_page.dart';
+import 'package:tiktok_clone/view/login_page.dart';
 import '../model/user.dart' as UserModel;
 
 class AuthController extends GetxController {
@@ -12,9 +14,29 @@ class AuthController extends GetxController {
   static AuthController instance = Get.find();
   // Profile Image
   Rx<File?>? _pickedImage;
+  // Firebase auth user
+  late Rx<User?> _user;
 
   // Profile pic getter
   File? get profilePhoto => _pickedImage!.value;
+
+  // on ready, when first time apps loads up.
+  @override
+  void onReady() {
+    super.onReady();
+    _user = Rx<User?>(firebaseAuth.currentUser);
+    _user.bindStream(firebaseAuth.authStateChanges());
+    // Whenever the _user got changes we will call a function.
+    ever(_user, _setInitialPage);
+  }
+
+  _setInitialPage(User? user) {
+    if (user == null) {
+      Get.offAll(() => LoginPage());
+    } else {
+      Get.offAll(() => const HomePage());
+    }
+  }
 
   // Registering a user
   void registerUser(
@@ -69,10 +91,24 @@ class AuthController extends GetxController {
 
   void pickImage() async {
     final pickedImage =
-        await ImagePicker().pickImage(source: ImageSource.camera);
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     if (pickedImage != null) {
       Get.snackbar("Profile Pic", "Profile Pic Image Choosen Successfully.");
     }
     _pickedImage = Rx<File?>(File(pickedImage!.path));
+  }
+
+  void loginUser(String email, String password) async {
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: password);
+      } else {
+        Get.snackbar(
+            "Error Loggin into Account", "Enter username and password");
+      }
+    } catch (e) {
+      Get.snackbar("Error Loggin into Account", e.toString());
+    }
   }
 }
