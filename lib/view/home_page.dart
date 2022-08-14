@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:tiktok_clone/constants.dart';
+import 'package:tiktok_clone/view/add_video_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,7 +17,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(child: Text("Hello")),
       bottomNavigationBar: BottomNavigationBar(
           onTap: (i) {
             setState(() {
@@ -74,6 +74,22 @@ class _HomePageState extends State<HomePage> {
               label: "Profile",
             ),
           ]),
+      body: getPagesById(pageIndex),
     );
   }
+}
+
+Widget getPagesById(int index) {
+  switch (index) {
+    case 0:
+      // Home
+      return Container(child: const Text("He1lo"));
+    case 1:
+      return const AddVideoPage();
+    case 2:
+      return const AddVideoPage();
+    case 3:
+      return const AddVideoPage();
+  }
+  return Container(child: const Text("He1lo"));
 }
