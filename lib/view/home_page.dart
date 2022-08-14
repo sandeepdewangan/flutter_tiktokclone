@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:tiktok_clone/constants.dart';
 import 'package:tiktok_clone/view/add_video_page.dart';
+import 'package:tiktok_clone/view/video_home_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -83,7 +84,7 @@ Widget getPagesById(int index) {
   switch (index) {
     case 0:
       // Home
-      return Container(child: const Text("He1lo"));
+      return VideoHomePage();
     case 1:
       return const AddVideoPage();
     case 2:

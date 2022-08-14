@@ -5,6 +5,7 @@ import 'package:tiktok_clone/view/add_video_page.dart';
 import 'package:tiktok_clone/view/home_page.dart';
 import 'package:tiktok_clone/view/login_page.dart';
 import 'package:tiktok_clone/view/video_confirm_page.dart';
+import 'package:tiktok_clone/view/video_home_page.dart';
 import './constants.dart';
 import './controller/auth_controller.dart';
 import './view/signup_page.dart';
@@ -28,12 +29,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: backgroundColor,
       ),
-      initialRoute: '/login',
+      initialRoute: '/video-home',
       getPages: [
         GetPage(name: '/login', page: () => LoginPage()),
         GetPage(name: '/home', page: () => const HomePage()),
         GetPage(name: '/add-video', page: () => const AddVideoPage()),
         GetPage(name: '/video-confirm', page: () => VideoConfirmPage()),
+        GetPage(name: '/video-home', page: () => VideoHomePage()),
       ],
     );
   }
