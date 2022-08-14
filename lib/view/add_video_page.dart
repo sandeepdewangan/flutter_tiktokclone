@@ -12,6 +12,8 @@ class AddVideoPage extends StatelessWidget {
   pickaVideo(ImageSource src, BuildContext context) async {
     final video = await ImagePicker().pickVideo(source: src);
     if (video != null) {
+      print("*******");
+      print(video.path);
       Get.to(() => VideoConfirmPage(), arguments: File(video.path));
     }
   }

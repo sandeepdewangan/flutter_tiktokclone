@@ -6,17 +6,18 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:tiktok_clone/constants.dart';
+import 'package:tiktok_clone/controller/uplaod_video_controller.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoConfirmPage extends StatelessWidget {
   VideoConfirmPage({Key? key}) : super(key: key);
 
   late VideoPlayerController vpController;
-  TextEditingController _captionController = TextEditingController();
-  TextEditingController _songNameController = TextEditingController();
+  final TextEditingController _captionController = TextEditingController();
+  final TextEditingController _songNameController = TextEditingController();
+  final uploadVideoController = Get.put(UploadVideoController());
 
   startPlayerController() {
-    print(Get.arguments);
     vpController = VideoPlayerController.file(Get.arguments);
     vpController.initialize();
     vpController.play();
@@ -57,7 +58,10 @@ class VideoConfirmPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 primary: myRed,
               ),
-              onPressed: () {},
+              onPressed: () => uploadVideoController.uploadVideo(
+                  songName: _songNameController.text,
+                  caption: _captionController.text,
+                  videoPath: Get.arguments.path),
               child: const Text("Share!")),
         ]),
       ),
